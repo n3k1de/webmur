@@ -19,8 +19,8 @@ window.mumbleWebConfig = {
     'pttKey': 'ctrl + shift',
     'vadLevel': 0.3,
     'toolbarVertical': false,
-    'showAvatars': 'always', // one of 'always', 'own_channel', 'linked_channel', 'minimal_only', 'never'
-    'userCountInChannelName': false,
+    'showAvatars': 'own_channel', // one of 'always', 'own_channel', 'linked_channel', 'minimal_only', 'never'
+    'userCountInChannelName': true,
     'audioBitrate': 40000, // bits per second
     'samplesPerPacket': 960
   },

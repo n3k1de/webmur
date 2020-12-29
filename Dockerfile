@@ -2,7 +2,7 @@ FROM alpine:edge
 MAINTAINER n3k1 <docker@n3k1.de>
 LABEL maintainer="n3k1 <docker@n3k1.de>"
 
-EXPOSE 80\tcp 443\tcp
+EXPOSE 443/tcp
 ENV MUMBLE_SERVER=mumble.aventer.biz:64738
 
 COPY ./ /home/node
@@ -33,5 +33,4 @@ RUN apk del gcc git
 USER node
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD websockify --ssl-target --web=/home/node/dist --log-file=/home/node/web.log -D 80 "$MUMBLE_SERVER" && \
-	websockify --ssl-target --web=/home/node/dist --log-file=/home/node/webssl.log --cert=/home/node/webmur.crt --key=/home/node/webmur.key 443 "$MUMBLE_SERVER"
+CMD websockify --web=/home/node/dist --log-file=/home/node/webssl.log --ssl-target --cert=/home/node/webmur.crt --key=/home/node/webmur.key 443 "$MUMBLE_SERVER"
